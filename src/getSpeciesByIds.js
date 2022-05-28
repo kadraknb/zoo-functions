@@ -8,16 +8,7 @@ function getSpeciesByIds(...ids) {
   });
   return get;
 }
-
-
 // return data.species.filter((bb, cc) => bb.id === ids[cc]);
-
 // let filtro = (ids) => data.species.filter((bb) => bb.id === ids);
-
-
 // console.log(getSpeciesByIds('01422318-ca2d-46b8-b66c-3e9e188244ed'));
-
-
-
-
 module.exports = getSpeciesByIds;
