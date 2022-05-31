@@ -2,9 +2,9 @@ const data = require('../data/zoo_data');
 
 function getSchedule(zz) {
   const res = {};
+  const { species } = data;
   const horas = Object.values(data.hours);
   const semana = Object.keys(data.hours);
-  const { species } = data;
   const mon = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
   const week = (bb) => `Open from ${horas[bb].open}am until ${horas[bb].close}pm`;
   const segunda = () => { res.Monday = mon; return res; };
