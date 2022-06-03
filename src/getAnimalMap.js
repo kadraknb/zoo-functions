@@ -1,79 +1,27 @@
-/* eslint-disable max-lines-per-function */
 const data = require('../data/zoo_data');
-const r = ['includesName', 'sorted', 'sex'];
-const test = {
-  NE: [
-    { lions: ['Zena', 'Maxwell', 'Faustino', 'Dee'] },
-    { giraffes: ['Gracia', 'Antone', 'Vicky', 'Clay', 'Arron', 'Bernard'] },
-  ],
+
+const ress = {};
+const loc = ['NE', 'NW', 'SE', 'SW'];
+const r = ['includeNames', 'sorted', 'sex'];
+
+const nomesSpe = (aa) => data.species.filter((bb) => bb.location === aa).map((cc) => cc.name);
+const tes = (aa) => nomesSpe(aa).map((bb) => data.species.find((cc) => cc.name === bb).residents);
+const nomes = (aa) => tes(aa).map((bb) => bb.map((dd) => dd.name));
+const respo = (paFor, fun) => nomesSpe(paFor).map((bb, cc) => ({ [bb]: fun(paFor)[cc] }));
+const resSort = (For, fun) => nomesSpe(For).map((bb, cc) => ({ [bb]: fun(For)[cc].sort() }));
+const resposta = (yy, xx) => loc.forEach((aa) => { ress[aa] = yy(aa, xx); });
+const tem = (gg, aa) => Object.keys(gg).includes(aa);
+
+const sexTest = (gg) => {
+  const nS = (aa) => tes(aa).map((bb) => bb.filter((dd) => dd.sex === gg.sex).map((cc) => cc.name));
+  if (tem(gg, r[2]) && tem(gg, r[1])) { resposta(resSort, nS); return ress; }
+  if (tem(gg, r[2])) { resposta(respo, nS); return ress; }
 };
-function getAnimalMap(options = {}) {
-  const ress = {};
-  const loc = ['NE', 'NW', 'SE', 'SW'];
-  const tem = (aa) => Object.keys(options).includes(aa);
-  const nomesSpe = (aa) => data.species.filter((bb) => bb.location === aa).map((cc) => cc.name);
-  //   const pus = (gg) => Object.values(ress)[zz].push(gg);
-
-  if (!tem(r[0])) { loc.forEach((aa) => { ress[aa] = nomesSpe(aa); }); }
-  if (tem(r[0])) {
-    loc.forEach((aa) => {
-      const nomes = nomesSpe(aa).map((bb) => data.species.find((cc) => cc.name === bb)
-        .residents.map((dd) => dd.name));
-
-      ress[aa] = nomesSpe(aa).map((bb, cc) => ({ [bb]: nomes[cc] }));
-    });
-
-
-    
-    // Object.keys(ress).forEach((xx, zz) => {
-    //   const nomeAni = nomesSpe(xx).map((bb) => data.species.find((cc) => cc.name === bb).residents.map((dd) => dd.name));
-    //   // console.log(nomeAni);
-    //   // console.log(nomesSpe(xx));
-    //   // console.log('==========');
-    //   // arr.forEach((aa, yy) => { ress[yy] = nomesSpe(xx).map((bb, cc) => ({ [bb]: nomeAni[cc] })); });
-    //   const seila = nomesSpe(xx).map((bb, cc) => ({ [bb]: nomeAni[cc] }));
-    //   ress[xx] = seila;
-    //   // console.log(seila);
-    // });
-
-
-    // Object.keys(ress).forEach((aa, zz) => {
-    //   const nomeAni = nomesSpe(aa).map((bb) => data.species.find((cc) => cc.name === bb).residents.map((dd) => dd.name));
-    //   const pus = (gg) => Object.values(ress)[zz].push(gg);
-    //   nomesSpe(aa).forEach((ff, hh) => { pus({ [ff]: [nomeAni[hh]] }); });
-    // });
-    return ress;
-  }
-  // console.log(test.NE[0]);
-  return ress;
+function getAnimalMap(zz = {}) {
+  if (!tem(zz, r[0])) { loc.forEach((aa) => { ress[aa] = nomesSpe(aa); }); return ress; }
+  if (tem(zz, r[2])) { sexTest(zz); return ress; }
+  if (tem(zz, r[1])) { resposta(resSort, nomes); return ress; }
+  resposta(respo, nomes); return ress;
 }
 
-console.log(getAnimalMap({ includesName: true }).NE[0] === test.NE[0]);
-console.log(getAnimalMap({ includesName: true }).NE[0]);
-console.log(getAnimalMap({ includesName: true }));
-//   ],
 module.exports = getAnimalMap;
-
-// includesName: true
-// "NE": Array [
-//     -     Object {
-//     -       "lions": Array [
-//     -         "Zena",
-//     -         "Maxwell",
-//     -         "Faustino",
-//     -         "Dee",
-//     -       ],
-//     -     },
-//     -     Object {
-//     -       "giraffes": Array [
-//     -         "Gracia",
-//     -         "Antone",
-//     -         "Vicky",
-//     -         "Clay",
-//     -         "Arron",
-//     -         "Bernard",
-//     -       ],
-//     -     },
-//     +     "lions",
-//     +     "giraffes",
-//         ],
