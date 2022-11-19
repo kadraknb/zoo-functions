@@ -1,13 +1,27 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Boas-vindas ao repositório do zoo-functions!
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+<details>
+  <summary><strong>O que foi desenvolvido</strong></summary>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Sabendo das suas habilidades com ES6, Higher Order Functions e testes, a prefeitura da cidade te deu uma importante missão: organizar as informações do zoológico! elephant
+
+desenvolvido funções que buscam informações sobre os animais do zoológico como: espécie e local de origem. Além disso, também vai ter buscar dados sobre as pessoas que colaboram com a manutenção e cuidado do zoológico. farmer
+
+E não para por aí! star_struck
+
+E implementação de testes contribui para a escrita de códigos mais confiáveis.
+
+<br />
+</details>
+
+## 🛠 Tecnologias
+
+- JavaScript
+- Jest
+
+
+## 📪 Contato
+
+- Email: [vagner_cardoso_s@outlook.com](vagner_cardoso_s@outlook.com)
+- GitHub: [kadraknb](https://github.com/kadraknb)
+- LinkedIn: [vagner-cardos-santos](https://www.linkedin.com/in/vagner-cardos-santos/)
